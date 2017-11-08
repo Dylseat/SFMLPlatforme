@@ -21,6 +21,7 @@ public:
 	void init(b2World& world, b2BodyType bodyType);
 	void update(sf::Time dt);
 	void draw(sf::RenderWindow& window);
+	void move();
 	RectType GetRectType();
 	
 private:

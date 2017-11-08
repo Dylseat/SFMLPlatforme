@@ -62,3 +62,20 @@ RectType Rect::GetRectType()
 {
 	return rectType;
 }
+
+void Rect::move()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+	{
+		body->SetLinearVelocity(b2Vec2(-2.f, 0.f));
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		body->SetLinearVelocity(b2Vec2(2.f, 0.f));
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Z) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		body->SetLinearVelocity(b2Vec2(0.f, -5.f));
+	}
+
+}

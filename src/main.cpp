@@ -1,13 +1,14 @@
 #include <iostream>
 #include <rectangle.h>
 #include <SFML/Graphics.hpp>
+#include <Box2D\Box2D.h>
 
 
 
 int main(int argc, const char* argv[])
 {
 	sf::RenderWindow window(
-		sf::VideoMode(800, 600), 
+		sf::VideoMode(800, 600),
 		"SFML Box2D Example");
 	window.setFramerateLimit(60.f);
 
@@ -27,7 +28,8 @@ int main(int argc, const char* argv[])
 	int32 velocityIterations = 8;   //how strongly to correct velocity
 	int32 positionIterations = 3;   //how strongly to correct position
 
-	
+
+
 	// run the program as long as the window is open
 	while (window.isOpen())
 	{
@@ -39,10 +41,23 @@ int main(int argc, const char* argv[])
 			// "close requested" event: we close the window
 			if (event.type == sf::Event::Closed)
 				window.close();
+			if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Left)
+				{
+					std::cout << "User's going left\n";
+				}
+				if (event.key.code == sf::Keyboard::Right)
+				{
+					std::cout << "User's going right\n";
+				}
+			}
 		}
+
+
 		world.Step(timeStep, velocityIterations, positionIterations);
 		rect.update(dt);
-
+		rect.move();
 		window.clear();
 		rect.draw(window);
 		ground.draw(window);
